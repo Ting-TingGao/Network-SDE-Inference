@@ -1,2 +1,2 @@
 # Network-SDE-Inference
-Codes and data for paper: Inferring stochastic dynamics of complex systems from empirical data
+Codes and data for paper: Learning interpretable dynamics of stochastic complex systems from experimental data
