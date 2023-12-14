@@ -15,7 +15,7 @@ This example demonstrates how to use the framework to infer the dynamics of an u
 
 To use the framework on your own data, simply modify the input data format to match the examples provided. The framework is designed to work with both weighted and unweighted networks, and can handle a variety of different network topologies. The inference and plotting code can be found in the corresponding files.
 
-Please look for all datasets in Figshare: 10.6084/m9.figshare.24804894, or contact Ting-Ting Gao (ttinggao314@gmail.com) and Gang Yan for large datasets.
+Please look for all datasets in Figshare: https://doi.org/10.6084/m9.figshare.24804894.v1, or contact Ting-Ting Gao (ttinggao314@gmail.com) and Gang Yan for large datasets.
 
 ## Requirements
 This framework requires Python 3.8 or higher, as well as several common scientific computing libraries, as shown below. These libraries can be installed using pip or conda:
