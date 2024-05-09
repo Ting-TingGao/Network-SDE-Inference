@@ -20,17 +20,29 @@ Please look for all datasets in Figshare: https://doi.org/10.6084/m9.figshare.24
 ## Requirements
 This framework requires Python 3.8 or higher, as well as several common scientific computing libraries, as shown below. These libraries can be installed using pip or conda:
 matplotlib                3.5.1
+
 numpy                     1.22.0
+
 pandas                    1.4.1
+
 scikit-learn              1.1.2
-scipy                     1.7.3            
-scs                       3.2.0               
-seaborn                   0.11.2  
+
+scipy                     1.7.3
+
+scs                       3.2.0
+
+seaborn                   0.11.2 
+
 torchvision               0.11.3
-pytorch                   1.10.2          
-pytorch-cluster           1.5.9      
-pytorch-scatter           2.0.9          
-pytorch-sparse            0.6.12          
+
+pytorch                   1.10.2 
+
+pytorch-cluster           1.5.9  
+
+pytorch-scatter           2.0.9    
+
+pytorch-sparse            0.6.12 
+
 pytorch-spline-conv       1.2.1  
 
 ## Citation
