@@ -12,4 +12,4 @@ Flock_dynamics_example.ipynb
 manuscript_flocks_empirical_hf1_2dim.ipynb (hf2, hf3, and hf4)
 Figure3.m (plot results)
 
-Please note that the experimental data should be downloaded from https://doi.org/10.6084/m9.figshare.24804894.v2. Make sure to modify the file paths accordingly.
+Please note that the experimental data should be downloaded from https://doi.org/10.6084/m9.figshare.24804894.v3. Make sure to modify the file paths accordingly.
