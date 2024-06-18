@@ -54,4 +54,5 @@ If you use this framework in your research, please cite our paper.
 
 ## Troubleshooting
 *If you would like to use the code in your research and have any questions, you can reach out to us via email: eegyan@gmail.com.
+
 Thanks to helpful discussions with Dr. Miles Cranmer on GitHub platform and Dr. Felix Dietrich with email.
