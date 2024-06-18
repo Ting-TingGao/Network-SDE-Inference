@@ -242,8 +242,8 @@ print(device)
 
 
 """Import data and prior information, pre-process data"""
-Timeseries = pd.read_csv('/home/ubuntu/GTT/StochasticDynamics/initial_injection_dataset.csv',encoding='utf-8',header=None)
-E = pd.read_csv('/home/ubuntu/GTT/StochasticDynamics/Elist_re_an_eu.csv',encoding='utf-8',header=None)
+Timeseries = pd.read_csv('initial_injection_dataset.csv',encoding='utf-8',header=None)
+E = pd.read_csv('Elist_re_an_eu.csv',encoding='utf-8',header=None)
 edge_index = E.iloc[:,0:2]-1
 edge_index = torch.tensor(edge_index.values.reshape(2,-1))
 
@@ -557,7 +557,7 @@ import matplotlib.pyplot as plt
 
 #time1 = y[0,:,:].reshape(1,-1)
 
-true_timeseries = pd.read_csv('/home/ubuntu/GTT/StochasticDynamics/aveData.csv',encoding='utf-8',header=None)
+true_timeseries = pd.read_csv('aveData.csv',encoding='utf-8',header=None)
 time1 = true_timeseries.values.reshape(-1,4,160)
 
 
