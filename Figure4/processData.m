@@ -241,16 +241,13 @@ for i = 1:160
     y_infer(3,i) = (injection(i)*coef(1,i)+tmp_r*coef(2,i)+tmp_a*coef(3,i)+tmp_e*coef(4,i))*tt(3);
     y_infer(4,i) = (injection(i)*coef(1,i)+tmp_r*coef(2,i)+tmp_a*coef(3,i)+tmp_e*coef(4,i))*tt(4);
 end
+% stochastic
 % y_infer(1,:) = y_infer(1,:)+std1.*randn(1,160).*0.1;
 % y_infer(2,:) = y_infer(2,:)+std2.*randn(1,160).*0.1;
 % y_infer(3,:) = y_infer(3,:)+std3.*randn(1,160).*0.1;
 % y_infer(4,:) = y_infer(4,:)+std4.*randn(1,160).*0.1;
 
-% y_infer(1,:) = y_infer(1,:)+normrnd(0,0.01,1,160).*mean(y_infer(1,:));
-% y_infer(2,:) = y_infer(2,:)+normrnd(0,0.01,1,160).*mean(y_infer(2,:));
-% y_infer(3,:) = y_infer(3,:)+normrnd(0,0.01,1,160).*mean(y_infer(3,:));
-% y_infer(4,:) = y_infer(4,:)+normrnd(0,0.01,1,160).*mean(y_infer(4,:));
-
+% determ
 y_infer(1,:) = abs(y_infer(1,:));
 y_infer(2,:) = abs(y_infer(2,:));
 y_infer(3,:) = abs(y_infer(3,:));
