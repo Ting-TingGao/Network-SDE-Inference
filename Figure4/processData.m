@@ -183,43 +183,20 @@ for i = 1:160
     Function(3,i) = tmp_a;
     Function(4,i) = tmp_e;
 end
-% coef = zeros(4,160);
-% for i = 1:160
-% p1 = Function(1,i);
-% p2 = Function(2,i);
-% p3 = Function(3,i);
-% p4 = Function(4,i);
-% yy = Type1(:,i);
+
 tt = [-1.44; -2.84; 0.32; 0.90;]+[1.5*1;1.5*3;1.5*6;1.5*9;]; % c = ct+1.5t
-%tt = -[-0.063203;-1.658832;-9.319879;-14.395618];
-% %tt = -[-0.05293649;-1.730772;-7.7784014;-12.183602];
-% ff = fittype(['(c1*',num2str(p1),'+c2*',num2str(p2),'+c3*',num2str(p3),'+c4*',num2str(p4),')*tt'],'dependent',{'yy'},...
-%     'independent',{'tt'}, 'coefficients',{'c1','c2','c3','c4'});
-% % ff = fittype(['(c1*',num2str(p1),'+c2*',num2str(p2),'+c3*',num2str(p3),')*tt'],'dependent',{'yy'},...
-% %   'independent',{'tt'}, 'coefficients',{'c1','c2','c3'})
-% myfit = fit(tt,yy,ff);
-% coef(1,i) = myfit.c1;
-% coef(2,i) = myfit.c2;
-% coef(3,i) = myfit.c3;
-% coef(4,i) = myfit.c4;
-% end
+ 
 
 %% tau diffusion prediction
 coef = csvread('inferred_coef_NTG.csv');
-%coef = csvread('inferred_coef_mutation_re08_ant028.csv');
+%coef = csvread('inferred_coef_mutation_re08_ant028.csv'); % for mutation system
 y_infer = [];
-%injection = zeros(1,160);
-%idx = randi(160,5,1);
-%idx = [60,62,63];
-%injection(idx)=1;
+
 for i = 1:160
     tmp_r = 0;
     tmp_a = 0;
     tmp_e = 0;
     for j = 1:160
-%         tmp_r = tmp_r + (injection(j)./(1+exp(-A(j,i))));
-%         tmp_a = tmp_a + (injection(j)./(1+exp(-aA(j,i))));
-%         tmp_e = tmp_e + (injection(j)*exp(Dnew(j,i)));
         if A(j,i)~=0
             tmp_r = tmp_r + (injection(j)./(1+exp(-A(j,i))));
         else
@@ -242,20 +219,20 @@ for i = 1:160
     y_infer(4,i) = (injection(i)*coef(1,i)+tmp_r*coef(2,i)+tmp_a*coef(3,i)+tmp_e*coef(4,i))*tt(4);
 end
 % stochastic
-% y_infer(1,:) = y_infer(1,:)+std1.*randn(1,160).*0.1;
-% y_infer(2,:) = y_infer(2,:)+std2.*randn(1,160).*0.1;
-% y_infer(3,:) = y_infer(3,:)+std3.*randn(1,160).*0.1;
-% y_infer(4,:) = y_infer(4,:)+std4.*randn(1,160).*0.1;
+y_infer(1,:) = y_infer(1,:)+std1.*randn(1,160).*0.1;
+y_infer(2,:) = y_infer(2,:)+std2.*randn(1,160).*0.1;
+y_infer(3,:) = y_infer(3,:)+std3.*randn(1,160).*0.1;
+y_infer(4,:) = y_infer(4,:)+std4.*randn(1,160).*0.1;
 
 % determ
-y_infer(1,:) = abs(y_infer(1,:));
-y_infer(2,:) = abs(y_infer(2,:));
-y_infer(3,:) = abs(y_infer(3,:));
-y_infer(4,:) = abs(y_infer(4,:));
+%y_infer(1,:) = abs(y_infer(1,:));
+%y_infer(2,:) = abs(y_infer(2,:));
+%y_infer(3,:) = abs(y_infer(3,:));
+%y_infer(4,:) = abs(y_infer(4,:));
 
 
 
-
+%% NTG plot
 figure;
 subplot(1,4,1)
 %set(gcf, 'Position', [500,500,400,400])
@@ -295,7 +272,7 @@ ylim([-10,2]);
 mdl = fitlm(Type1(4,:),y_infer(4,:))
 
 
-
+%% Mutation plot
 % figure;
 % subplot(1,4,1)
 % %set(gcf, 'Position', [500,500,400,400])
@@ -333,8 +310,7 @@ mdl = fitlm(Type1(4,:),y_infer(4,:))
 % xlim([-10,2]);
 % ylim([-10,2]); 
 % mdl = fitlm(Type2(4,:),y_infer(4,:))
-% 
-% %writematrix(y_infer,'inferred_tau_path_0633.csv');
+%
 
 %% null model test
 % rsquare = zeros(500,4);
@@ -388,7 +364,7 @@ mdl = fitlm(Type1(4,:),y_infer(4,:))
 % 
 % end
 
-%% 
+%% SI plot
 name_id = fopen('names.csv');
 Names = textscan(name_id,'%s%d%f%d','Delimiter',',');
 fclose(name_id);
