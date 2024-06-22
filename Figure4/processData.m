@@ -17,15 +17,15 @@ Type1(4,:) = mean(data(34:39,1:end));
 std4 = std(data(34:39,1:end));
 
 % G2019S
-Type2 = zeros(4,size(data,2));
-Type2(1,:) = mean(data(5:7,1:end));
-std1 = std(data(5:7,1:end));
-Type2(2,:) = mean(data(16:22,1:end));
-std2 = std(data(16:22,1:end));
-Type2(3,:) = mean(data(29:33,1:end));
-std3 = std(data(29:33,1:end));
-Type2(4,:) = mean(data(40:end,1:end));
-std4 = std(data(40:end,1:end));
+% Type2 = zeros(4,size(data,2));
+% Type2(1,:) = mean(data(5:7,1:end));
+% std1 = std(data(5:7,1:end));
+% Type2(2,:) = mean(data(16:22,1:end));
+% std2 = std(data(16:22,1:end));
+% Type2(3,:) = mean(data(29:33,1:end));
+% std3 = std(data(29:33,1:end));
+% Type2(4,:) = mean(data(40:end,1:end));
+% std4 = std(data(40:end,1:end));
 
 % data augumentation
 DataSet = zeros(5000,size(data,2)*5);
