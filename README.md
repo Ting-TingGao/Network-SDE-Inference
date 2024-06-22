@@ -13,7 +13,7 @@ Example: Fig1_Lorenz_unweighted.ipynb
 ### To get started, we recommend checking out the Fig1_Lorenz_unweighted example. 
 This example demonstrates how to use the framework to infer the dynamics of an unweighted network based on the Lorenz system. The data for all examples can be found in the Data directory, and the inference and plotting code can be found in the corresponding files (Figure1).
 
-To use the framework on your own data, simply modify the input data format to match the examples provided. The framework is designed to work with both weighted and unweighted networks, and can handle a variety of different network topologies. The inference and plotting code can be found in the corresponding files.
+To use the framework on your own data, simply modify the input data format (for example, for 2-dimensional dynamics with N nodes, data format should be [x1, y1, x2, y2, x3, y3, ...xN, yN]) to match the examples provided. The framework is designed to work with both weighted and unweighted networks, and can handle a variety of different network topologies. The inference and plotting code can be found in the corresponding files.
 
 Please note that the data for Fig3 and Fig4 is too large to upload at Github. Please download it from https://doi.org/10.6084/m9.figshare.24804894.v4 and modify the file path to ensure proper execution.
 
