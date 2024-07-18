@@ -49,7 +49,10 @@ pytorch-sparse            0.6.12
 pytorch-spline-conv       1.2.1  
 
 ## Citation
-If you use this framework in your research, please cite our paper.
+If you use this framework in your research, please cite our paper:
+
+T.-T. Gao, B. Barzel, & G. Yan. Learning interpretable dynamics of stochastic complex systems from experimental data. Nat. Commun. 15, 6029 (2024). https://doi.org/10.1038/s41467-024-50378-x
+
 
 
 ## Troubleshooting
