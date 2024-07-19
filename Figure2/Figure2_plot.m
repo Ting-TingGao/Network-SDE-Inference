@@ -52,9 +52,9 @@ for t = 1:T
                 %tmp = tmp+A(i,j)*sin(x(t,3*j-2)-x(t,3*i-2));
             end
         end
-        x(t+1,3*i-2) = x(t,3*i-2)+(x(t,3*i-1)-x(t,3*i-2)^3+3*x(t,3*i-2)^2-x(t,3*i)+3.24+tmp)*dt+stochastic*x(t,3*i-2)*s(t,3*i-2);
-        x(t+1,3*i-1) = x(t,3*i-1)+(1-5*x(t,3*i-2)^2-x(t,3*i-1))*dt+stochastic*x(t,3*i-1)*s(t,3*i-1);
-        x(t+1,3*i) = x(t,3*i)+(0.005*(4*(x(t,3*i-2)+1.6)-x(t,3*i)))*dt+stochastic*x(t,3*i)*s(t,3*i);
+        x(t+1,3*i-2) = x(t,3*i-2)+(x(t,3*i-1)-x(t,3*i-2)^3+3*x(t,3*i-2)^2-x(t,3*i)+3.24+tmp)*dt+abs(stochastic*x(t,3*i-2))*s(t,3*i-2);
+        x(t+1,3*i-1) = x(t,3*i-1)+(1-5*x(t,3*i-2)^2-x(t,3*i-1))*dt+abs(stochastic*x(t,3*i-1))*s(t,3*i-1);
+        x(t+1,3*i) = x(t,3*i)+(0.005*(4*(x(t,3*i-2)+1.6)-x(t,3*i)))*dt+abs(stochastic*x(t,3*i))*s(t,3*i);
         %F(t+1,3*i-2) = x(t,3*i-1)-x(t,3*i-2)^3+3*x(t,3*i-2)^2-x(t,3*i)+3.24+tmp;
         %F(t+1,3*i-1) = 1-5*x(t,3*i-2)^2-x(t,3*i-1);
         %F(t+1,3*i) = 0.005*(4*(x(t,3*i-2)+1.6)-x(t,3*i));
@@ -109,9 +109,9 @@ for t = 1:T
                 tmp = tmp+abs(A(i,j))*(i3+i4*xi(t,3*i-2))/(1+exp(-10*(xi(t,3*j-2)-1)));
             end
         end
-        xi(t+1,3*i-2) = xi(t,3*i-2)+(i7*xi(t,3*i-1)+i6*xi(t,3*i-2)^3+i5*xi(t,3*i-2)^2+i8*xi(t,3*i)+i9+tmp)*dt+stochastic*xi(t,3*i-2)*s(t,3*i-2);
-        xi(t+1,3*i-1) = xi(t,3*i-1)+(i12+i10*xi(t,3*i-2)^2+i11*xi(t,3*i-1))*dt+stochastic*xi(t,3*i-1)*s(t,3*i-1);
-        xi(t+1,3*i) = xi(t,3*i)+(0.031040927+0.01878267*xi(t,3*i-2)-0.00480374*xi(t,3*i))*dt+stochastic*xi(t,3*i)*s(t,3*i);
+        xi(t+1,3*i-2) = xi(t,3*i-2)+(i7*xi(t,3*i-1)+i6*xi(t,3*i-2)^3+i5*xi(t,3*i-2)^2+i8*xi(t,3*i)+i9+tmp)*dt+abs(0.1*xi(t,3*i-2))*s(t,3*i-2);
+        xi(t+1,3*i-1) = xi(t,3*i-1)+(i12+i10*xi(t,3*i-2)^2+i11*xi(t,3*i-1))*dt+abs(0.1*xi(t,3*i-1))*s(t,3*i-1);
+        xi(t+1,3*i) = xi(t,3*i)+(0.031040927+0.01878267*xi(t,3*i-2)-0.00480374*xi(t,3*i))*dt+abs(0.1*xi(t,3*i))*s(t,3*i);
         Fi(t+1,3*i-2) = i7*xi(t,3*i-1)+i6*xi(t,3*i-2)^3+i5*xi(t,3*i-2)^2+i8*xi(t,3*i)+i9+tmp;
         Fi(t+1,3*i-1) = i12+i10*xi(t,3*i-2)^2+i11*xi(t,3*i-1);
         Fi(t+1,3*i) =0.031040927+0.01878267*xi(t,3*i-2)-0.00480374*xi(t,3*i);
@@ -192,9 +192,9 @@ for t = 1:T
         for j = 1:n1
             tmp = tmp+A(i,j)*(x(t,3*j-2)-x(t,3*i-2));
         end
-        x(t+1,3*i-2) = x(t,3*i-2)+(-x(t,3*i-1)-x(t,3*i)+0.5*tmp)*dt+eta*x(t,3*i-2)*s(t,3*i-2);
-        x(t+1,3*i-1) = x(t,3*i-1)+(x(t,3*i-2)+0.35*x(t,3*i-1))*dt+eta*x(t,3*i-1)*s(t,3*i-1);
-        x(t+1,3*i) = x(t,3*i)+(0.2 + x(t,3*i)*(x(t,3*i-2)-5.7))*dt+eta*x(t,3*i)*s(t,3*i);
+        x(t+1,3*i-2) = x(t,3*i-2)+(-x(t,3*i-1)-x(t,3*i)+0.5*tmp)*dt+abs(eta*x(t,3*i-2))*s(t,3*i-2);
+        x(t+1,3*i-1) = x(t,3*i-1)+(x(t,3*i-2)+0.35*x(t,3*i-1))*dt+abs(eta*x(t,3*i-1))*s(t,3*i-1);
+        x(t+1,3*i) = x(t,3*i)+(0.2 + x(t,3*i)*(x(t,3*i-2)-5.7))*dt+abs(eta*x(t,3*i))*s(t,3*i);
         F(t+1,3*i-2) = -x(t,3*i-1)-x(t,3*i)+0.5*tmp;
         F(t+1,3*i-1) = x(t,3*i-2)+0.35*x(t,3*i-1);
         F(t+1,3*i) = 0.2 + x(t,3*i)*(x(t,3*i-2)-5.7);
@@ -224,9 +224,9 @@ for t = 1:T
         for j = 1:n1
             tmp = tmp+A(i,j)*(xi(t,3*j-2)-xi(t,3*i-2));
         end
-        xi(t+1,3*i-2) = xi(t,3*i-2)+(-1.00289452*xi(t,3*i-1)-0.99984907*xi(t,3*i)+0.507567*tmp)*dt+eta*x(t,3*i-2)*s(t,3*i-2);
-        xi(t+1,3*i-1) = xi(t,3*i-1)+(1.0004688*xi(t,3*i-2)+0.34313912*xi(t,3*i-1))*dt+eta*xi(t,3*i-1)*s(t,3*i-1);
-        xi(t+1,3*i) = xi(t,3*i)+(0.210632896 + xi(t,3*i)*(0.99224356*xi(t,3*i-2)-5.65610949))*dt+0.498*xi(t,3*i)*s(t,3*i);
+        xi(t+1,3*i-2) = xi(t,3*i-2)+(-1.00289452*xi(t,3*i-1)-0.99984907*xi(t,3*i)+0.507567*tmp)*dt+abs(0.11*x(t,3*i-2))*s(t,3*i-2);
+        xi(t+1,3*i-1) = xi(t,3*i-1)+(1.0004688*xi(t,3*i-2)+0.34313912*xi(t,3*i-1))*dt+abs(0.1*xi(t,3*i-1))*s(t,3*i-1);
+        xi(t+1,3*i) = xi(t,3*i)+(0.210632896 + xi(t,3*i)*(0.99224356*xi(t,3*i-2)-5.65610949))*dt+abs(0.1*xi(t,3*i))*s(t,3*i);
         xi_determ(t+1,3*i-2) = xi_determ(t,3*i-2)+(-1.00289452*xi_determ(t,3*i-1)-0.99984907*xi_determ(t,3*i)+0.507567*tmp)*dt;
         xi_determ(t+1,3*i-1) = xi_determ(t,3*i-1)+(1.0004688*xi_determ(t,3*i-2)+0.34313912*xi_determ(t,3*i-1))*dt;
         xi_determ(t+1,3*i) = xi_determ(t,3*i)+(0.210632896 + xi_determ(t,3*i)*(0.99224356*xi_determ(t,3*i-2)-5.65610949))*dt;
