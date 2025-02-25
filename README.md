@@ -5,7 +5,7 @@ Authors: Ting-Ting Gao, Baruch Barzel, and Gang Yan*
 
 ## GNN-based Stochastic Network Dynamics Inference Framework
 
-![Framework](https://www.nature.com/articles/s41467-024-50378-x/figures/1)
+![Framework](Fig1.png)
 
 This repository contains a GNN-based framework for inferring stochastic network dynamics, and several examples showcasing its usage. 
 
