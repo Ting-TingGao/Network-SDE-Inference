@@ -60,4 +60,11 @@ T.-T. Gao, B. Barzel, & G. Yan. Learning interpretable dynamics of stochastic co
 ## Troubleshooting
 *If you would like to use the code in your research and have any questions, you can reach out to us via email: eegyan@gmail.com.
 
+## Acknowledgments
+This project includes code from [symbolic_deep_learning](https://github.com/MilesCranmer/symbolic_deep_learning),  
+developed by Miles Cranmer et al., and licensed under the MIT License.
+- Original repository: [https://github.com/MilesCranmer/symbolic_deep_learning](https://github.com/MilesCranmer/symbolic_deep_learning)
+- Copyright (c) Miles Cranmer et al.
+- Licensed under the MIT License (see `LICENSE` file in the original repository for details).
+- 
 Thanks to helpful discussions with Dr. Miles Cranmer on GitHub platform and Dr. Felix Dietrich with email.
