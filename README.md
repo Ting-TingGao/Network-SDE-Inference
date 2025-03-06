@@ -66,5 +66,5 @@ developed by Miles Cranmer et al., and licensed under the MIT License.
 - Original repository: [https://github.com/MilesCranmer/symbolic_deep_learning](https://github.com/MilesCranmer/symbolic_deep_learning)
 - Copyright (c) Miles Cranmer et al.
 - Licensed under the MIT License (see `LICENSE` file in the original repository for details).
-- 
+
 Thanks to helpful discussions with Dr. Miles Cranmer on GitHub platform and Dr. Felix Dietrich with email.
