@@ -19,7 +19,7 @@ To use the framework on your own data, simply modify the input data format (for 
 
 Please note that the data for Fig3 and Fig4 is too large to upload at Github. Please download it from https://doi.org/10.6084/m9.figshare.24804894.v4 and modify the file path to ensure proper execution.
 
-Please look for all datasets in Figshare: https://doi.org/10.6084/m9.figshare.24804894.v4, or contact Ting-Ting Gao (ttinggao314@gmail.com) and Gang Yan for large datasets.
+Please look for all datasets in Figshare: https://doi.org/10.6084/m9.figshare.24804894.v4, or contact Ting-Ting Gao (ti.gao@northeastern.edu) for large datasets.
 
 ## Requirements
 This framework requires Python 3.8 or higher, as well as several common scientific computing libraries, as shown below. These libraries can be installed using pip or conda:
@@ -58,7 +58,7 @@ T.-T. Gao, B. Barzel, & G. Yan. Learning interpretable dynamics of stochastic co
 
 
 ## Troubleshooting
-*If you would like to use the code in your research and have any questions, you can reach out to us via email: eegyan@gmail.com.
+*If you would like to use the code in your research and have any questions, you can reach out to us via email: ti.gao@northeastern.edu
 
 ## Acknowledgments
 This project includes code from [symbolic_deep_learning](https://github.com/MilesCranmer/symbolic_deep_learning),  
