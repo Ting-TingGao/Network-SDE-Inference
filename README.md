@@ -50,6 +50,8 @@ pytorch-sparse            0.6.12
 
 pytorch-spline-conv       1.2.1  
 
+tqdm                      4.63.0
+
 ## Citation
 If you use this framework in your research, please cite our paper:
 
