@@ -12,6 +12,10 @@ class SDIdifftype(MessagePassing):
 
         """If flow is 'source_to_target', the relation is (j,i), means information is passed from x_j to x_i'"""
         super(SDIdifftype, self).__init__(aggr=aggr, flow=flow)
+        
+        self.delt_t = delt_t
+        self.ndim = ndim
+        
         self.msg_fnc_cohesion = Seq(
             Lin(1,hidden),
             ReLU(),
@@ -269,33 +273,33 @@ class SDI_Difftype(SDIdifftype):
                 v_loss = torch.sum((g.y[:,3:6] - vUpdate)**2)
                 a_loss = torch.sum((g.y[:,6:] - a_est)**2)
                 dis_loss = torch.sum(neg_log_likelihood_x)+torch.sum(neg_log_likelihood_y)+torch.sum(neg_log_likelihood_z)
-                #print(g.y[:,6:])
-                #print(a_est)
-                #print(x_loss,v_loss,a_loss,dis_loss)
                 return dis_loss+a_loss*1e6+x_loss*1e6+v_loss*1e6
-                #return dis_loss
+                
      def sample_trajectories(self, g, **kwargs):
-            if self.ndim == 1:
-                out_dist_x,xUpdate,vUpdate,a_est = self.SDI_weighted(g)
-                vxUpdate_sample = out_dist_x.sample()
-                vUpdate_sample = vxUpdate_sample.reshape(-1,1)
-                xUpdate_sample = g.x[:,0].reshape(-1,1)+g.x[:,1].reshape(-1,1)*delt_t+vUpdate_sample*delt_t
-                return xUpdate_sample,vUpdate_sample
-            if self.ndim == 2:
-                out_dist_x,out_dist_y,xUpdate,vUpdate,a_est = self.SDI_weighted(g)
-                vxUpdate_sample = out_dist_x.sample()
-                vyUpdate_sample = out_dist_y.sample()
-                vUpdate_sample = torch.cat((vxUpdate_sample.reshape(-1,1),vyUpdate_sample.reshape(-1,1)),dim=1)
-                xUpdate_sample = g.x[:,0:2].reshape(-1,2)+g.x[:,2:4].reshape(-1,2)*delt_t+vUpdate_sample*delt_t
-                return xUpdate_sample,vUpdate_sample
-            if self.ndim == 3:
-                out_dist_x,out_dist_y,out_dist_z,xUpdate,vUpdate,a_est = self.SDI_weighted(g)
-                vxUpdate_sample = out_dist_x.sample()
-                vyUpdate_sample = out_dist_y.sample()
-                vzUpdate_sample = out_dist_z.sample()
-                vUpdate_sample = torch.cat((vxUpdate_sample.reshape(-1,1),vyUpdate_sample.reshape(-1,1),vzUpdate_sample.reshape(-1,1)),dim=1)
-                xUpdate_sample = g.x[:,0:3].reshape(-1,3)+g.x[:,3:6].reshape(-1,3)*delt_t+vUpdate_sample*delt_t
-                return xUpdate_sample,vUpdate_sample
+        if self.ndim == 1:
+            out_dist_x,xUpdate,vUpdate,a_est = self.SDI_weighted(g)
+            vxUpdate_sample = out_dist_x.sample()
+            vUpdate_sample = vxUpdate_sample.reshape(-1,1)
+            xUpdate_sample = g.x[:,0].reshape(-1,1)+g.x[:,1].reshape(-1,1)*self.delt_t+vUpdate_sample*self.delt_t
+            return xUpdate_sample,vUpdate_sample
+            
+        if self.ndim == 2:
+            out_dist_x,out_dist_y,xUpdate,vUpdate,a_est = self.SDI_weighted(g)
+            vxUpdate_sample = out_dist_x.sample()
+            vyUpdate_sample = out_dist_y.sample()
+            vUpdate_sample = torch.cat((vxUpdate_sample.reshape(-1,1),vyUpdate_sample.reshape(-1,1)),dim=1)
+            xUpdate_sample = g.x[:,0:2].reshape(-1,2)+g.x[:,2:4].reshape(-1,2)*self.delt_t+vUpdate_sample*self.delt_t
+            return xUpdate_sample,vUpdate_sample
+            
+        if self.ndim == 3:
+            out_dist_x,out_dist_y,out_dist_z,xUpdate,vUpdate,a_est = self.SDI_weighted(g)
+            vxUpdate_sample = out_dist_x.sample()
+            vyUpdate_sample = out_dist_y.sample()
+            vzUpdate_sample = out_dist_z.sample()
+            vUpdate_sample = torch.cat((vxUpdate_sample.reshape(-1,1),vyUpdate_sample.reshape(-1,1),vzUpdate_sample.reshape(-1,1)),dim=1)
+            xUpdate_sample = g.x[:,0:3].reshape(-1,3)+g.x[:,3:6].reshape(-1,3)*self.delt_t+vUpdate_sample*self.delt_t
+            return xUpdate_sample,vUpdate_sample
+                
      def average_trajectories(self, g, **kwargs):
             if self.ndim == 1:
                 out_dist_x,xUpdate,vUpdate,a_est = self.SDI_weighted(g)
